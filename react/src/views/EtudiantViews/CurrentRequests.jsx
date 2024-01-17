@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 export default function CurrentRequests() {
     const { id } = useParams();
-    const [Requests, setRequests] = useState(null);
+    const [Requests, setRequests] = useState([]);
 
     useEffect(() => {
         const fetchRequestsDetails = async () => {
@@ -19,6 +19,30 @@ export default function CurrentRequests() {
 
         fetchRequestsDetails();
     }, [id]);
+
+
+
+
+
+    if (Requests.length === 0) {
+        return (<div className="card text-center">
+        <div className="card-header">
+          
+        </div>
+        <div className="card-body">
+          <h5 className="card-title">Hello </h5>
+          <p className="card-text">You have no Current Document Requests , try to refresh  the Page or Request a Document.</p>
+          <a href={`/Document/${id}`} className="btn btn-primary">Request ?</a>
+        </div>
+   
+      </div>
+      );
+    }
+
+
+
+
+
 
     return (
         <div className="container">
